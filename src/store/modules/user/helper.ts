@@ -17,7 +17,7 @@ export function defaultSetting(): UserState {
     userInfo: {
       avatar: 'https://avatars.githubusercontent.com/u/6214936',
       name: 'nagaame',
-      description: 'My <a href="https://kuokuo.io" class="text-blue-500" target="_blank" >Blog</a> and <a href="https://github.com/nagaame" class="text-blue-500" target="_blank">Github</a>',
+      description: 'My <a href="https://kuokuo.io" class="text-blue-500" target="_blank" >Blog</a> and <a href="https://t.me/sonny_kirby" class="text-blue-500" target="_blank">Telegram</a>',
     },
   }
 }
