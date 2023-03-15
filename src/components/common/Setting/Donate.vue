@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import { NSpin } from 'naive-ui'
 import { fetchChatConfig } from '@/api'
-import pkg from '@/../package.json'
 
 interface ConfigState {
   timeoutMs?: number
@@ -44,13 +43,12 @@ onMounted(() => {
       </div>
       <div class="flex gap-10 flex-col md:flex-col lg:flex-row">
         <div class="flex-1">
-          <img src="../../../assets/wechat.jpg" alt="WeChat" />
+          <img src="../../../assets/wechat.jpg" alt="WeChat">
         </div>
         <div class="flex-1">
-          <img src="../../../assets/alipay.jpg" alt="Alipay" />
+          <img src="../../../assets/alipay.jpg" alt="Alipay">
         </div>
-    </div>
-
+      </div>
     </div>
   </NSpin>
 </template>

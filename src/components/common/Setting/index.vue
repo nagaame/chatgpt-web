@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import { NModal, NTabPane, NTabs } from 'naive-ui'
 import General from './General.vue'
 import About from './About.vue'
-import Donate from "./Donate.vue"
+import Donate from './Donate.vue'
 import { SvgIcon } from '@/components/common'
 
 const props = defineProps<Props>()
