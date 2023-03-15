@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { NModal, NTabPane, NTabs } from 'naive-ui'
 import General from './General.vue'
 import About from './About.vue'
+import Donate from "./Donate.vue"
 import { SvgIcon } from '@/components/common'
 
 const props = defineProps<Props>()
@@ -48,6 +49,13 @@ const show = computed({
             <span class="ml-2">{{ $t('setting.config') }}</span>
           </template>
           <About />
+        </NTabPane>
+        <NTabPane name="Donate" tab="Donate">
+          <template #tab>
+            <SvgIcon class="text-lg" icon="mdi:donate-outline" />
+            <span class="ml-2">{{ $t('setting.donate') }}</span>
+          </template>
+          <Donate />
         </NTabPane>
       </NTabs>
     </div>

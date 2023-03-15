@@ -39,6 +39,7 @@ export default {
     setting: '设置',
     general: '总览',
     config: '配置',
+    donate: '捐赠',
     avatarLink: '头像链接',
     name: '名称',
     description: '描述',

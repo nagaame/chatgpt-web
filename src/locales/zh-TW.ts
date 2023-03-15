@@ -38,6 +38,7 @@ export default {
     setting: '設定',
     general: '總覽',
     config: '設定',
+    donate: '捐贈',
     avatarLink: '頭貼連結',
     name: '名稱',
     description: '描述',
