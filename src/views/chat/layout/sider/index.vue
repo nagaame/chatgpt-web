@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import { NButton, NLayoutSider } from 'naive-ui'
 import List from './List.vue'
 import Footer from './Footer.vue'
+import Donate from './Donate.vue'
 import { useAppStore, useChatStore } from '@/store'
 import { useBasicLayout } from '@/hooks/useBasicLayout'
 import { PromptStore } from '@/components/common'
@@ -13,6 +14,7 @@ const chatStore = useChatStore()
 
 const { isMobile } = useBasicLayout()
 const show = ref(false)
+const donateShow = ref(false)
 
 const collapsed = computed(() => appStore.siderCollapsed)
 
@@ -79,7 +81,10 @@ watch(
         <div class="flex-1 min-h-0 pb-4 overflow-hidden">
           <List />
         </div>
-        <div class="p-4">
+        <div class="p-4 flex flex-col gap-2">
+          <NButton block @click="donateShow = true">
+            {{ $t('setting.donate') }}
+          </NButton>
           <NButton block @click="show = true">
             Prompt Store
           </NButton>
@@ -92,4 +97,5 @@ watch(
     <div v-show="!collapsed" class="fixed inset-0 z-40 bg-black/40" @click="handleUpdateCollapsed" />
   </template>
   <PromptStore v-model:visible="show" />
+  <Donate v-model:visible="donateShow" />
 </template>
