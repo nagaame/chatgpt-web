@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { CSSProperties } from 'vue'
 import { computed, ref, watch } from 'vue'
-import { NButton, NLayoutSider } from 'naive-ui'
+import { NButton, NLayoutSider, NModal } from 'naive-ui'
 import List from './List.vue'
 import Footer from './Footer.vue'
 import Donate from './Donate.vue'
@@ -15,11 +15,16 @@ const chatStore = useChatStore()
 const { isMobile } = useBasicLayout()
 const show = ref(false)
 const donateShow = ref(false)
+const contact = ref(false)
 
 const collapsed = computed(() => appStore.siderCollapsed)
 
 function handleAdd() {
-  chatStore.addHistory({ title: 'New Chat', uuid: Date.now(), isEdit: false })
+  chatStore.addHistory({
+    title: 'New Chat',
+    uuid: Date.now(),
+    isEdit: false,
+  })
   if (isMobile.value)
     appStore.setSiderCollapsed(true)
 }
@@ -82,8 +87,13 @@ watch(
           <List />
         </div>
         <div class="p-4 flex flex-col gap-2">
-          <NButton block @click="donateShow = true">
-            {{ $t('setting.donate') }}
+          <NButton block type="primary" @click="donateShow = true">
+            <span class="font-bold">
+              {{ $t("setting.donate") }}
+            </span>
+          </NButton>
+          <NButton block @click="contact = true">
+            {{ $t("setting.contactMe") }}
           </NButton>
           <NButton block @click="show = true">
             Prompt Store
@@ -94,8 +104,23 @@ watch(
     </div>
   </NLayoutSider>
   <template v-if="isMobile">
-    <div v-show="!collapsed" class="fixed inset-0 z-40 bg-black/40" @click="handleUpdateCollapsed" />
+    <div
+      v-show="!collapsed"
+      class="fixed inset-0 z-40 bg-black/40"
+      @click="handleUpdateCollapsed"
+    />
   </template>
   <PromptStore v-model:visible="show" />
   <Donate v-model:visible="donateShow" />
+  <NModal
+    v-model:show="contact"
+    style="width: 90%; max-width: 800px"
+    preset="card"
+    :title="$t('setting.contactMe')"
+  >
+    <div class="p-4 space-y-4">
+      {{ $t("setting.wechat") }}：tuiakk
+      <span class="ml-8">{{ $t("setting.email") }}：kk@kuokuo.io</span>
+    </div>
+  </NModal>
 </template>
